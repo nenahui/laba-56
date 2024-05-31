@@ -10,10 +10,10 @@ import Burger from '../Burger/Burger';
 
 const Main = () => {
   const [ingredients, setIngredients] = useState([
-    {name: 'Meat', count: 0, id: nanoid()},
-    {name: 'Cheese', count: 0, id: nanoid()},
-    {name: 'Salad', count: 0, id: nanoid()},
-    {name: 'Beacon', count: 0, id: nanoid()},
+    {name: 'Meat', count: 0, price: 80, id: nanoid()},
+    {name: 'Cheese', count: 0, price: 50, id: nanoid()},
+    {name: 'Salad', count: 0, price: 10, id: nanoid()},
+    {name: 'Beacon', count: 0, price: 60, id: nanoid()},
   ]);
 
   const increaseIngredients = (id: string) => {
@@ -45,19 +45,44 @@ const Main = () => {
   });
 
   const burgerList = ingredients.map((ingredient => {
-    if (ingredient.name === 'Meat' && ingredient.count) {
-      return new Array(ingredient.count).fill(null).map((_, index) => <Meat key={index}/>);
+    if (ingredient.name === 'Meat') {
+      const beaconList = [];
+      for (let i = 0; i < ingredient.count; i++) {
+        beaconList.push(<Meat/>);
+      }
+      return beaconList;
     }
+
     if (ingredient.name === 'Cheese') {
-      return new Array(ingredient.count).fill(null).map((_, index) => <Cheese key={index}/>);
+      const beaconList = [];
+      for (let i = 0; i < ingredient.count; i++) {
+        beaconList.push(<Cheese/>);
+      }
+      return beaconList;
     }
+
     if (ingredient.name === 'Salad') {
-      return new Array(ingredient.count).fill(null).map((_, index) => <Salad key={index}/>);
+      const beaconList = [];
+      for (let i = 0; i < ingredient.count; i++) {
+        beaconList.push(<Salad/>);
+      }
+      return beaconList;
     }
+
     if (ingredient.name === 'Beacon') {
-      return new Array(ingredient.count).fill(null).map((_, index) => <Beacon key={index}/>);
+      const beaconList = [];
+      for (let i = 0; i < ingredient.count; i++) {
+        beaconList.push(<Beacon/>);
+      }
+      return beaconList;
     }
   }));
+
+  const totalPrice = () => {
+    const total = ingredients.reduce((acc, ingredient) => acc + ingredient.count * ingredient.price, 30);
+    console.log(total);
+    return total;
+  };
 
   return (
     <>
@@ -70,6 +95,7 @@ const Main = () => {
           {burgerList}
         </Burger>
       </Container>
+      <p>Price: {totalPrice()}</p>
     </>
   );
 };
