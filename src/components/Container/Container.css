@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px;
+  border: 1px solid #FFF;
+  position: relative;
+  border-radius: 10px;
+
+  & strong {
+    position: absolute;
+    top: -16px;
+    left: 40px;
+    background: #242424;
+    padding: 4px 10px;
+  }
+}
