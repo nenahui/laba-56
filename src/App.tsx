@@ -9,7 +9,7 @@ import Container from './components/Container/Container';
 import Burger from './components/Burger/Burger';
 import './App.css';
 
-const Main = () => {
+const App = () => {
   const [ingredients, setIngredients] = useState([
     {name: 'Meat', count: 0, price: 80, id: nanoid()},
     {name: 'Cheese', count: 0, price: 50, id: nanoid()},
@@ -101,4 +101,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default App;
